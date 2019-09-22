@@ -9,5 +9,33 @@
       padding: 10px; }
       #emoji-container #categories-wrapper .label-wrapper .label-text {
         margin-left: 8px; }
+  #emoji-container #emoji-wrapper {
+    flex-grow: 9;
+    display: flex;
+    padding-right: 20%;
+    flex-direction: column; }
+    #emoji-container #emoji-wrapper .search-wrapper {
+      display: flex;
+      position: relative; }
+      #emoji-container #emoji-wrapper .search-wrapper .search-input {
+        width: 100%;
+        height: 20px;
+        font-size: 24px;
+        padding: 12px 60px 12px 24px;
+        font-weight: 600;
+        box-shadow: inset 0 2px 1px 0 rgba(0, 0, 0, 0.05);
+        border: 2px solid #dee2e6;
+        border-radius: 4px; }
+      #emoji-container #emoji-wrapper .search-wrapper .submit-btn {
+        background: none;
+        border: none;
+        position: absolute;
+        right: 6px;
+        top: 10px;
+        font-size: 24px;
+        cursor: pointer;
+        color: #dee2e6; }
+        #emoji-container #emoji-wrapper .search-wrapper .submit-btn:focus {
+          outline: none; }
 
 /*# sourceMappingURL=index.css.map */

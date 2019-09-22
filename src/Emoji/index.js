@@ -1,6 +1,8 @@
 import './index.css';
 
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import Categories from '../data/Categories';
 import Checkbox from './Checkbox';
@@ -10,6 +12,9 @@ const Emoji = () => {
             'categories': [],
             'search': []
         }),
+
+        [searchTerm, setSearchTerm] = useState(''),
+
         handleAddKeywords = (val, type) => {
             const newKeywords = {...keywords};
             if (type === 'categories') {
@@ -24,6 +29,30 @@ const Emoji = () => {
                 }
             }
             setKeyWords(newKeywords);
+        },
+
+        removeKeywords = (val, type) => {
+            if (type === 'searchTerm') {
+                setSearchTerm('');
+            } else if (type === 'searchKeyword') {
+                const newKeywords = {...keywords};
+                newKeywords.search = newKeywords.search.filter((keyword) => keyword !== val);
+                setKeyWords(newKeywords);
+            } else if (type === 'searchCategories') {
+                const newKeywords = {...keywords};
+                newKeywords.categories = newKeywords.categories.filter((keyword) => keyword !== val);
+                setKeyWords(newKeywords);
+            }
+        },
+
+        handleSearchSubmit = (event, val) => {
+            event.preventDefault();
+            handleAddKeywords(val, 'search');
+            setSearchTerm('');
+        },
+
+        handleSearchTermChange = (event) => {
+            setSearchTerm(event.target.value);
         };
 
     return (
@@ -43,6 +72,27 @@ const Emoji = () => {
                 }
             </div>
             <div id="emoji-wrapper">
+                <form
+                    className="search-wrapper"
+                    onSubmit={(event) => handleSearchSubmit(event, searchTerm)}
+                >
+                    <input
+                        className="search-input"
+                        onChange={handleSearchTermChange}
+                        placeholder="Search Emojis!"
+                        type="text"
+                        value={searchTerm}
+                    />
+                    <button
+                        className="submit-btn"
+                        type="submit"
+                    >
+                        <FontAwesomeIcon
+                            className="search-icon"
+                            icon={faSearch}
+                        />
+                    </button>
+                </form>
             </div>
         </div>
     );
