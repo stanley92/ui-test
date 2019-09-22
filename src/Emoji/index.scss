@@ -87,7 +87,19 @@
     }
 
     #emoji-wrapper {
+      display: flex;
+      flex-wrap: wrap;
 
+      .symbol-wrapper {
+        display: flex;
+        justify-content: space-evenly;
+        height: 50px;
+        width: 50px;
+
+        .symbol {
+          font-size: 40px;
+        }
+      }
     }
   }
 

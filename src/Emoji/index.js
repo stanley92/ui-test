@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
 import Categories from '../data/Categories';
+import EmojiList from '../data/EmojiList';
 import Checkbox from './Checkbox';
 
 const Emoji = () => {
@@ -141,10 +142,29 @@ const Emoji = () => {
             </form>
         ),
 
+        renderEmojis = () => {
+            return (
+                <div id="emoji-wrapper">
+                    {
+                        EmojiList.map((val, index) => {
+                            return (
+                                <div className="symbol-wrapper">
+                                    <div className="symbol">
+                                        {val.symbol}
+                                    </div>
+                                </div>
+                            );
+                        })
+                    }
+                </div>
+            );
+        },
+
         renderRightPanel = () => (
             <div className="right-panel">
                 {renderSearch()}
                 {renderSelectionButtons(searchTerm, keywords.search, keywords.categories)}
+                {renderEmojis()}
             </div>
         );
 

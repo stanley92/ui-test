@@ -53,5 +53,15 @@
           font-weight: 600; }
         #emoji-container .right-panel .selection-wrapper .selection-btn .cancel-icon {
           font-size: 14px; }
+    #emoji-container .right-panel #emoji-wrapper {
+      display: flex;
+      flex-wrap: wrap; }
+      #emoji-container .right-panel #emoji-wrapper .symbol-wrapper {
+        display: flex;
+        justify-content: space-evenly;
+        height: 50px;
+        width: 50px; }
+        #emoji-container .right-panel #emoji-wrapper .symbol-wrapper .symbol {
+          font-size: 40px; }
 
 /*# sourceMappingURL=index.css.map */
