@@ -1,14 +1,18 @@
 #emoji-container {
   display: flex;
-  margin-top: 40px;
+  padding-top: 40px;
+  margin-top: 5px;
+  background-color: #f8f9fa;
 
   .left-panel {
     width: 20%;
+    border-right: 2px solid #e9ecef;
+    margin-top: -36px;
 
     #categories-wrapper {
       display: flex;
       flex-direction: column;
-      padding: 80px 20px 40px 60px;
+      padding: 30px 20px 40px 60px;
 
       .label-wrapper {
         padding: 10px;
@@ -70,11 +74,9 @@
     }
 
     .selection-wrapper {
-      padding: 20px 0;
-
       .selection-btn {
         margin-right: 10px;
-        margin-bottom: 10px;
+        margin-top: 20px;
         padding: 8px;
         border-radius: 5px;
         background: #495057;
@@ -104,17 +106,30 @@
     }
 
     #emoji-wrapper {
-      display: flex;
-      flex-wrap: wrap;
+      .count-wrapper {
+        font-weight: 600;
+        color: #495057;
+        font-size: 24px;
+        margin-top: 20px;
+        padding-left: 5px;
+        padding-bottom: 20px;
+        border-bottom: 5px solid #e9ecef;
+      }
 
-      .symbol-wrapper {
+      #symbol-container {
         display: flex;
-        justify-content: space-evenly;
-        height: 50px;
-        width: 50px;
+        flex-wrap: wrap;
+        padding-top: 20px;
 
-        .symbol {
-          font-size: 40px;
+        .symbol-wrapper {
+          display: flex;
+          justify-content: space-evenly;
+          height: 50px;
+          width: 50px;
+
+          .symbol {
+            font-size: 40px;
+          }
         }
       }
     }

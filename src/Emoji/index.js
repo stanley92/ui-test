@@ -175,17 +175,22 @@ const Emoji = () => {
 
             return (
                 <div id="emoji-wrapper">
-                    {
-                        emojiToDisplay.map((val) => {
-                            return (
-                                <div className="symbol-wrapper">
-                                    <div className="symbol">
-                                        {val.symbol}
+                    <div className="count-wrapper">
+                        {emojiToDisplay.length} Emojis
+                    </div>
+                    <div id="symbol-container">
+                        {
+                            emojiToDisplay.map((val) => {
+                                return (
+                                    <div className="symbol-wrapper">
+                                        <div className="symbol">
+                                            {val.symbol}
+                                        </div>
                                     </div>
-                                </div>
-                            );
-                        })
-                    }
+                                );
+                            })
+                        }
+                    </div>
                 </div>
             );
         },
