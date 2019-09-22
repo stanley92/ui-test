@@ -1,3 +1,13 @@
-
+#emoji-container {
+  display: flex; }
+  #emoji-container #categories-wrapper {
+    flex-grow: 1;
+    padding: 0 40px;
+    display: flex;
+    flex-direction: column; }
+    #emoji-container #categories-wrapper .label-wrapper {
+      padding: 10px; }
+      #emoji-container #categories-wrapper .label-wrapper .label-text {
+        margin-left: 8px; }
 
 /*# sourceMappingURL=index.css.map */
