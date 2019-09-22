@@ -2,7 +2,7 @@
   display: flex;
 
   #categories-wrapper {
-    flex-grow: 1;
+    width: 20%;
     padding: 0 40px;
     display: flex;
     flex-direction: column;
@@ -17,7 +17,7 @@
   }
 
   #emoji-wrapper {
-    flex-grow: 9;
+    width: 80%;
     display: flex;
     padding-right: 20%;
     flex-direction: column;
@@ -25,7 +25,6 @@
     .search-wrapper {
       display: flex;
       position: relative;
-
 
       .search-input {
         width: 100%;
@@ -54,6 +53,32 @@
 
         .search-icon {
 
+        }
+      }
+    }
+
+    .selection-wrapper {
+      padding: 20px 0;
+
+      .selection-btn {
+        margin-right: 10px;
+        margin-bottom: 10px;
+        padding: 8px;
+        border: 1px solid black;
+        border-radius: 5px;
+
+        &:focus {
+          outline: none;
+        }
+
+        .btn-text {
+          padding-right: 5px;
+          font-size: 12px;
+          font-weight: 500;
+        }
+
+        .cancel-icon {
+          font-size: 14px;
         }
       }
     }

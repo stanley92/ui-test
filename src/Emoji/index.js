@@ -2,7 +2,7 @@ import './index.css';
 
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
 import Categories from '../data/Categories';
 import Checkbox from './Checkbox';
@@ -53,6 +53,51 @@ const Emoji = () => {
 
         handleSearchTermChange = (event) => {
             setSearchTerm(event.target.value);
+        },
+
+        renderSelectionButtons = (currentSearchTerm, search, categories) => {
+            return (
+                <div className="selection-wrapper">
+                    {
+                        currentSearchTerm.trim() ?
+                            <button className="selection-btn" onClick={() => removeKeywords(currentSearchTerm.trim(), 'searchTerm')}>
+                                <span className="btn-text">{currentSearchTerm.trim()}</span>
+                                <FontAwesomeIcon
+                                    className="cancel-icon"
+                                    icon={faTimesCircle}
+                                />
+                            </button>
+                            :
+                            null
+                    }
+                    {
+                        search.map((select, index) => {
+                            return (
+                                <button className="selection-btn" onClick={() => removeKeywords(select, 'searchKeyword')}>
+                                    <span className="btn-text">{select}</span>
+                                    <FontAwesomeIcon
+                                        className="cancel-icon"
+                                        icon={faTimesCircle}
+                                    />
+                                </button>
+                            );
+                        })
+                    }
+                    {
+                        categories.map((select, index) => {
+                            return (
+                                <button className="selection-btn" onClick={() => removeKeywords(select, 'searchCategories')}>
+                                    <span className="btn-text">{select}</span>
+                                    <FontAwesomeIcon
+                                        className="cancel-icon"
+                                        icon={faTimesCircle}
+                                    />
+                                </button>
+                            );
+                        })
+                    }
+                </div>
+            );
         };
 
     return (
@@ -93,6 +138,7 @@ const Emoji = () => {
                         />
                     </button>
                 </form>
+                {renderSelectionButtons(searchTerm, keywords.search, keywords.categories)}
             </div>
         </div>
     );
