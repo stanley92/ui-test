@@ -71,7 +71,7 @@ const Emoji = () => {
                         null
                 }
                 {
-                    search.map((select, index) => {
+                    search.map((select) => {
                         return (
                             <button className="selection-btn" onClick={() => removeKeywords(select, 'searchKeyword')}>
                                 <span className="btn-text">{select}</span>
@@ -84,7 +84,7 @@ const Emoji = () => {
                     })
                 }
                 {
-                    categories.map((select, index) => {
+                    categories.map((select) => {
                         return (
                             <button className="selection-btn" onClick={() => removeKeywords(select, 'searchCategories')}>
                                 <span className="btn-text">{select}</span>
@@ -143,10 +143,40 @@ const Emoji = () => {
         ),
 
         renderEmojis = () => {
+            let emojiToDisplay = EmojiList;
+
+            if (searchTerm) {
+                emojiToDisplay = emojiToDisplay.filter((val) => val.keywords.includes(searchTerm) || val.title.includes(searchTerm));
+            }
+
+            if (keywords.categories.length > 0) {
+                for (const category of keywords.categories) {
+                    emojiToDisplay = emojiToDisplay.filter((val) => {
+                        for (const symbol of Categories[category]) {
+                            if (
+                                val.keywords.includes(symbol.replace('_', ' ')) ||
+                                val.keywords.includes(symbol.replace('-', ' ')) ||
+                                val.title.includes(symbol.replace('_', ' ')) ||
+                                val.title.includes(symbol.replace('-', ' '))
+                            ) {
+                                return true;
+                            }
+                        }
+                        return false;
+                    });
+                }
+            }
+
+            if (keywords.search.length > 0) {
+                for (const search of keywords.search) {
+                    emojiToDisplay = emojiToDisplay.filter((val) => (val.keywords.includes(search.toLowerCase()) || val.title.includes(search.toLowerCase())));
+                }
+            }
+
             return (
                 <div id="emoji-wrapper">
                     {
-                        EmojiList.map((val, index) => {
+                        emojiToDisplay.map((val) => {
                             return (
                                 <div className="symbol-wrapper">
                                     <div className="symbol">

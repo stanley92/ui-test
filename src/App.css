@@ -1,36 +1,21 @@
-/*.App {*/
-/*  text-align: center;*/
-/*}*/
-/*.App-logo {*/
-/*  height: 40vmin;*/
-/*}*/
-/*.App-header {*/
-/*  background-color: #282c34;*/
-/*  min-height: 100vh;*/
-/*  display: flex;*/
-/*  flex-direction: column;*/
-/*  align-items: center;*/
-/*  justify-content: center;*/
-/*  font-size: calc(10px + 2vmin);*/
-/*  color: white;*/
-/*}*/
-/*.App-link {*/
-/*  color: #09d3ac;*/
-/*}*/
 .app .app-header {
-  position: sticky;
   top: 0;
-  padding: 20px;
+  padding: 10px 20px 0 20px;
   display: flex;
-  justify-content: center; }
+  justify-content: center;
+  box-shadow: 0 0.25rem 0.125rem 0 rgba(0, 0, 0, 0.05); }
   .app .app-header .nav-wrapper .list-wrapper {
     display: flex; }
     .app .app-header .nav-wrapper .list-wrapper .link-wrapper {
       padding: 20px;
       text-transform: uppercase; }
       .app .app-header .nav-wrapper .list-wrapper .link-wrapper a {
-        text-decoration: none; }
-      .app .app-header .nav-wrapper .list-wrapper .link-wrapper .active {
-        border-bottom: 2px solid red; }
+        text-decoration: none;
+        font-weight: 600;
+        color: #495057;
+        opacity: 0.6; }
+        .app .app-header .nav-wrapper .list-wrapper .link-wrapper a.active, .app .app-header .nav-wrapper .list-wrapper .link-wrapper a:hover {
+          opacity: 1;
+          transition: all .1s ease-in; }
 
 /*# sourceMappingURL=App.css.map */
