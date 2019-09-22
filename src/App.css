@@ -22,7 +22,7 @@
   top: 0;
   padding: 20px;
   display: flex;
-  justify-content: flex-end; }
+  justify-content: center; }
   .app .app-header .nav-wrapper .list-wrapper {
     display: flex; }
     .app .app-header .nav-wrapper .list-wrapper .link-wrapper {

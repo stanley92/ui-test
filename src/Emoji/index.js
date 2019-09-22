@@ -55,91 +55,103 @@ const Emoji = () => {
             setSearchTerm(event.target.value);
         },
 
-        renderSelectionButtons = (currentSearchTerm, search, categories) => {
-            return (
-                <div className="selection-wrapper">
-                    {
-                        currentSearchTerm.trim() ?
-                            <button className="selection-btn" onClick={() => removeKeywords(currentSearchTerm.trim(), 'searchTerm')}>
-                                <span className="btn-text">{currentSearchTerm.trim()}</span>
+        renderSelectionButtons = (currentSearchTerm, search, categories) => (
+            <div className="selection-wrapper">
+                {
+                    currentSearchTerm.trim() ?
+                        <button className="selection-btn" onClick={() => removeKeywords(currentSearchTerm.trim(), 'searchTerm')}>
+                            <span className="btn-text">{currentSearchTerm.trim()}</span>
+                            <FontAwesomeIcon
+                                className="cancel-icon"
+                                icon={faTimesCircle}
+                            />
+                        </button>
+                        :
+                        null
+                }
+                {
+                    search.map((select, index) => {
+                        return (
+                            <button className="selection-btn" onClick={() => removeKeywords(select, 'searchKeyword')}>
+                                <span className="btn-text">{select}</span>
                                 <FontAwesomeIcon
                                     className="cancel-icon"
                                     icon={faTimesCircle}
                                 />
                             </button>
-                            :
-                            null
-                    }
+                        );
+                    })
+                }
+                {
+                    categories.map((select, index) => {
+                        return (
+                            <button className="selection-btn" onClick={() => removeKeywords(select, 'searchCategories')}>
+                                <span className="btn-text">{select}</span>
+                                <FontAwesomeIcon
+                                    className="cancel-icon"
+                                    icon={faTimesCircle}
+                                />
+                            </button>
+                        );
+                    })
+                }
+            </div>
+        ),
+
+        renderLeftPanel = () => (
+            <div className="left-panel">
+                <div id="categories-wrapper">
                     {
-                        search.map((select, index) => {
-                            return (
-                                <button className="selection-btn" onClick={() => removeKeywords(select, 'searchKeyword')}>
-                                    <span className="btn-text">{select}</span>
-                                    <FontAwesomeIcon
-                                        className="cancel-icon"
-                                        icon={faTimesCircle}
-                                    />
-                                </button>
-                            );
-                        })
-                    }
-                    {
-                        categories.map((select, index) => {
-                            return (
-                                <button className="selection-btn" onClick={() => removeKeywords(select, 'searchCategories')}>
-                                    <span className="btn-text">{select}</span>
-                                    <FontAwesomeIcon
-                                        className="cancel-icon"
-                                        icon={faTimesCircle}
-                                    />
-                                </button>
-                            );
-                        })
+                        Object.keys(Categories).map((val, index) =>
+                            <label className="label-wrapper" key={index} >
+                                <Checkbox
+                                    checked={keywords.categories.includes(val)}
+                                    onChange={() => handleAddKeywords(val, 'categories')}
+                                />
+                                <span className="label-text">
+                                    {val}
+                                </span>
+                            </label>)
                     }
                 </div>
-            );
-        };
+            </div>
+        ),
+
+        renderSearch = () => (
+            <form
+                className="search-wrapper"
+                onSubmit={(event) => handleSearchSubmit(event, searchTerm)}
+            >
+                <input
+                    className="search-input"
+                    onChange={handleSearchTermChange}
+                    placeholder="Search Emojis!"
+                    type="text"
+                    value={searchTerm}
+                />
+                <button
+                    className="submit-btn"
+                    type="submit"
+                >
+                    <FontAwesomeIcon
+                        className="search-icon"
+                        icon={faSearch}
+                    />
+                </button>
+            </form>
+        ),
+
+        renderRightPanel = () => (
+            <div className="right-panel">
+                {renderSearch()}
+                {renderSelectionButtons(searchTerm, keywords.search, keywords.categories)}
+            </div>
+        );
 
     return (
         <div id="emoji-container">
-            <div id="categories-wrapper">
-                {
-                    Object.keys(Categories).map((val, index) =>
-                        <label className="label-wrapper" key={index} >
-                            <Checkbox
-                                checked={keywords.categories.includes(val)}
-                                onChange={() => handleAddKeywords(val, 'categories')}
-                            />
-                            <span className="label-text">
-                                {val}
-                            </span>
-                        </label>)
-                }
-            </div>
-            <div id="emoji-wrapper">
-                <form
-                    className="search-wrapper"
-                    onSubmit={(event) => handleSearchSubmit(event, searchTerm)}
-                >
-                    <input
-                        className="search-input"
-                        onChange={handleSearchTermChange}
-                        placeholder="Search Emojis!"
-                        type="text"
-                        value={searchTerm}
-                    />
-                    <button
-                        className="submit-btn"
-                        type="submit"
-                    >
-                        <FontAwesomeIcon
-                            className="search-icon"
-                            icon={faSearch}
-                        />
-                    </button>
-                </form>
-                {renderSelectionButtons(searchTerm, keywords.search, keywords.categories)}
-            </div>
+            {renderLeftPanel()}
+            {renderRightPanel()}
         </div>
     );
 };
