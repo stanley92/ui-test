@@ -1,0 +1,25 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true
+  },
+  "ecmaFeatures": {
+    "jsx": true
+  },
+  "plugins": [
+    "react",
+    "react-hooks"
+  ],
+  "extends": ["eslint:all", "plugin:react/all"],
+  "rules": {
+    "quotes": ["error", "single"],
+    "semi": 2,
+    "padded-blocks": "off",
+    "max-len": "off",
+    "array-element-newline": "off",
+    "function-call-arugement-newline": "off",
+    "function-call-element-newline": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
+  }
+}
