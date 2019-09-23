@@ -49,26 +49,6 @@
         color: #dee2e6; }
         #emoji-container .right-panel .search-wrapper .submit-btn:focus {
           outline: none; }
-    #emoji-container .right-panel .selection-wrapper .selection-btn {
-      margin-right: 10px;
-      margin-top: 20px;
-      padding: 8px;
-      border-radius: 5px;
-      background: #495057;
-      border: 1px solid #495057;
-      color: white; }
-      #emoji-container .right-panel .selection-wrapper .selection-btn:hover {
-        background: #fa5252;
-        border: 1px solid #fa5252;
-        cursor: pointer; }
-      #emoji-container .right-panel .selection-wrapper .selection-btn:focus {
-        outline: none; }
-      #emoji-container .right-panel .selection-wrapper .selection-btn .btn-text {
-        padding-right: 5px;
-        font-size: 14px;
-        font-weight: 600; }
-      #emoji-container .right-panel .selection-wrapper .selection-btn .cancel-icon {
-        font-size: 14px; }
     #emoji-container .right-panel #emoji-wrapper .count-wrapper {
       font-weight: 600;
       color: #495057;

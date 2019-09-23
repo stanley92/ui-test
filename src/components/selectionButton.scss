@@ -1,0 +1,29 @@
+.selection-btn {
+  margin-right: 10px;
+  margin-top: 20px;
+  padding: 8px;
+  border-radius: 5px;
+  background: #495057;
+  border: 1px solid #495057;
+  color: white;
+
+  &:hover {
+    background: #fa5252;
+    border: 1px solid #fa5252;
+    cursor: pointer;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  .btn-text {
+    padding-right: 5px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .cancel-icon {
+    font-size: 14px;
+  }
+}

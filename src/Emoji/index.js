@@ -6,7 +6,9 @@ import { faSearch, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
 import Categories from '../data/Categories';
 import EmojiList from '../data/EmojiList';
-import Checkbox from './Checkbox';
+
+import Checkbox from '../components/Checkbox';
+import SelectionButton from '../components/SelectionButton';
 
 const Emoji = () => {
     const [keywords, setKeyWords] = useState({
@@ -60,39 +62,36 @@ const Emoji = () => {
             <div className="selection-wrapper">
                 {
                     currentSearchTerm.trim() ?
-                        <button className="selection-btn" onClick={() => removeKeywords(currentSearchTerm.trim(), 'searchTerm')}>
-                            <span className="btn-text">{currentSearchTerm.trim()}</span>
-                            <FontAwesomeIcon
-                                className="cancel-icon"
-                                icon={faTimesCircle}
-                            />
-                        </button>
+                        <SelectionButton
+                            icon={faTimesCircle}
+                            iconClassName="cancel-icon"
+                            onClick={() => removeKeywords(currentSearchTerm.trim(), 'searchTerm')}
+                            searchTerm={currentSearchTerm.trim()}
+                        />
                         :
                         null
                 }
                 {
                     search.map((select) => {
                         return (
-                            <button className="selection-btn" onClick={() => removeKeywords(select, 'searchKeyword')}>
-                                <span className="btn-text">{select}</span>
-                                <FontAwesomeIcon
-                                    className="cancel-icon"
-                                    icon={faTimesCircle}
-                                />
-                            </button>
+                            <SelectionButton
+                                icon={faTimesCircle}
+                                iconClassName="cancel-icon"
+                                onClick={() => removeKeywords(select, 'searchKeyword')}
+                                searchTerm={select}
+                            />
                         );
                     })
                 }
                 {
                     categories.map((select) => {
                         return (
-                            <button className="selection-btn" onClick={() => removeKeywords(select, 'searchCategories')}>
-                                <span className="btn-text">{select}</span>
-                                <FontAwesomeIcon
-                                    className="cancel-icon"
-                                    icon={faTimesCircle}
-                                />
-                            </button>
+                            <SelectionButton
+                                icon={faTimesCircle}
+                                iconClassName="cancel-icon"
+                                onClick={() => removeKeywords(select, 'searchCategories')}
+                                searchTerm={select}
+                            />
                         );
                     })
                 }
