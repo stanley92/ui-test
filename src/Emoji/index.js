@@ -145,7 +145,7 @@ const Emoji = () => {
             let emojiToDisplay = EmojiList;
 
             if (searchTerm) {
-                emojiToDisplay = emojiToDisplay.filter((val) => val.keywords.includes(searchTerm) || val.title.includes(searchTerm));
+                emojiToDisplay = emojiToDisplay.filter((val) => val.keywords.includes(searchTerm.toLowerCase()) || val.title.includes(searchTerm.toLowerCase()));
             }
 
             if (keywords.categories.length > 0) {
@@ -153,10 +153,8 @@ const Emoji = () => {
                     emojiToDisplay = emojiToDisplay.filter((val) => {
                         for (const symbol of Categories[category]) {
                             if (
-                                val.keywords.includes(symbol.replace('_', ' ')) ||
-                                val.keywords.includes(symbol.replace('-', ' ')) ||
-                                val.title.includes(symbol.replace('_', ' ')) ||
-                                val.title.includes(symbol.replace('-', ' '))
+                                val.title.toLowerCase() === symbol.replace('_', ' ').toLowerCase() ||
+                                val.title.toLowerCase() === symbol.replace('-', ' ').toLowerCase()
                             ) {
                                 return true;
                             }
