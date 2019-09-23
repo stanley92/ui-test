@@ -50,8 +50,11 @@ const Emoji = () => {
 
         handleSearchSubmit = (event, val) => {
             event.preventDefault();
-            handleAddKeywords(val, 'search');
-            setSearchTerm('');
+
+            if (val) {
+                handleAddKeywords(val, 'search');
+                setSearchTerm('');
+            }
         },
 
         handleSearchTermChange = (event) => {
@@ -61,12 +64,12 @@ const Emoji = () => {
         renderSelectionButtons = (currentSearchTerm, search, categories) => (
             <div className="selection-wrapper">
                 {
-                    currentSearchTerm.trim() ?
+                    currentSearchTerm ?
                         <SelectionButton
                             icon={faTimesCircle}
                             iconClassName="cancel-icon"
-                            onClick={() => removeKeywords(currentSearchTerm.trim(), 'searchTerm')}
-                            searchTerm={currentSearchTerm.trim()}
+                            onClick={() => removeKeywords(currentSearchTerm, 'searchTerm')}
+                            searchTerm={currentSearchTerm}
                         />
                         :
                         null
@@ -120,7 +123,7 @@ const Emoji = () => {
         renderSearch = () => (
             <form
                 className="search-wrapper"
-                onSubmit={(event) => handleSearchSubmit(event, searchTerm)}
+                onSubmit={(event) => handleSearchSubmit(event, searchTerm.trim())}
             >
                 <input
                     className="search-input"
@@ -144,8 +147,8 @@ const Emoji = () => {
         renderEmojis = () => {
             let emojiToDisplay = EmojiList;
 
-            if (searchTerm) {
-                emojiToDisplay = emojiToDisplay.filter((val) => val.keywords.includes(searchTerm.toLowerCase()) || val.title.includes(searchTerm.toLowerCase()));
+            if (searchTerm.trim()) {
+                emojiToDisplay = emojiToDisplay.filter((val) => val.keywords.includes(searchTerm.trim().toLowerCase()) || val.title.includes(searchTerm.trim().toLowerCase()));
             }
 
             if (keywords.categories.length > 0) {
@@ -197,7 +200,7 @@ const Emoji = () => {
         renderRightPanel = () => (
             <div className="right-panel">
                 {renderSearch()}
-                {renderSelectionButtons(searchTerm, keywords.search, keywords.categories)}
+                {renderSelectionButtons(searchTerm.trim(), keywords.search, keywords.categories)}
                 {renderEmojis()}
             </div>
         );
