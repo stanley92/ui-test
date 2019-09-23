@@ -154,7 +154,9 @@ const Emoji = () => {
                         for (const symbol of Categories[category]) {
                             if (
                                 val.title.toLowerCase() === symbol.replace('_', ' ').toLowerCase() ||
-                                val.title.toLowerCase() === symbol.replace('-', ' ').toLowerCase()
+                                val.title.toLowerCase() === symbol.replace('-', ' ').toLowerCase() ||
+                                val.title.toLowerCase().includes(symbol.replace('_', ' ').toLowerCase()) ||
+                                val.title.toLowerCase().includes(symbol.replace('-', ' ').toLowerCase())
                             ) {
                                 return true;
                             }
