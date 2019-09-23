@@ -3,7 +3,8 @@ import './App.css';
 import {
     NavLink,
     Route,
-    BrowserRouter as Router
+    BrowserRouter as Router,
+    Redirect,
 } from 'react-router-dom';
 import React from 'react';
 
@@ -21,20 +22,21 @@ function App () {
                     <nav className="nav-wrapper">
                         <div className="list-wrapper">
                             <div className="link-wrapper">
-                                <NavLink to="/" exact activeClassName="active">About</NavLink>
+                                <NavLink to="/" activeClassName="active">About Me</NavLink>
                             </div>
                             <div className="link-wrapper">
                                 <NavLink to="/emoji/" activeClassName="active">Emojis</NavLink>
                             </div>
-                            <div className="link-wrapper">
-                                <NavLink to="/slate/" activeClassName="active">Slate</NavLink>
-                            </div>
+                            {/*<div className="link-wrapper">*/}
+                            {/*    <NavLink to="/slate/" activeClassName="active">Slate</NavLink>*/}
+                            {/*</div>*/}
                         </div>
                     </nav>
                 </header>
-                <Route path="/" exact component={About} />
                 <Route path="/emoji/" component={Emoji} />
                 <Route path="/slate/" component={Slate} />
+                <Route path="/" exact component={About} />
+                <Redirect to="/" from="/" />
             </div>
         </Router>
     );
