@@ -1,9 +1,9 @@
+@import url(fonts.css);
 .app .app-header {
   top: 0;
-  padding: 10px 20px 0 20px;
   display: flex;
   justify-content: center;
-  box-shadow: 0 0.25rem 0.125rem 0 rgba(0, 0, 0, 0.05); }
+  background-color: #412a49; }
   .app .app-header .nav-wrapper .list-wrapper {
     display: flex; }
     .app .app-header .nav-wrapper .list-wrapper .link-wrapper {

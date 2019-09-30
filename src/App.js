@@ -11,7 +11,7 @@ import React from 'react';
 import About from './About';
 import Emoji from './Emoji';
 import Slate from './Slate';
-
+import Trace from './Trace';
 
 function App () {
 
@@ -27,16 +27,20 @@ function App () {
                             <div className="link-wrapper">
                                 <NavLink to="/emoji/" activeClassName="active">Emojis</NavLink>
                             </div>
+                            <div className="link-wrapper">
+                                <NavLink to="/trace/" activeClassName="active">Trace</NavLink>
+                            </div>
                             {/*<div className="link-wrapper">*/}
                             {/*    <NavLink to="/slate/" activeClassName="active">Slate</NavLink>*/}
                             {/*</div>*/}
                         </div>
                     </nav>
                 </header>
-                <Route path="/emoji/" component={Emoji} />
-                <Route path="/slate/" component={Slate} />
-                <Route path="/" exact component={About} />
-                <Redirect to="/" from="/" />
+                {/*<Route path="/emoji/" component={Emoji} />*/}
+                <Route path="/trace/" component={Trace} />
+                {/*<Route path="/slate/" component={Slate} />*/}
+                {/*<Route path="/" exact component={About} />*/}
+                <Redirect to="/trace" from="/" />
             </div>
         </Router>
     );

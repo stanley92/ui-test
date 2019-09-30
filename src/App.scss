@@ -1,11 +1,12 @@
+@import "fonts.css";
+@import "color_variables";
 
 .app {
   .app-header {
     top: 0;
-    padding: 10px 20px 0 20px;
     display: flex;
     justify-content: center;
-    box-shadow: 0 0.25rem 0.125rem 0 rgba(0,0,0,0.05);
+    background-color: $abubergine;
 
     .nav-wrapper {
       .list-wrapper {
