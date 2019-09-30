@@ -38,11 +38,19 @@
         justify-content: center;
         align-items: center;
         flex: 1; }
+        #trace-container .content-box .action-container #start-webcam:hover {
+          cursor: pointer; }
       #trace-container .content-box .action-container #upload-image {
         display: flex;
         justify-content: center;
         align-items: center;
         flex: 1; }
+        #trace-container .content-box .action-container #upload-image:hover {
+          cursor: pointer; }
+        #trace-container .content-box .action-container #upload-image [type="file"] {
+          height: 0;
+          overflow: hidden;
+          width: 0; }
       #trace-container .content-box .action-container #url-upload {
         display: flex;
         align-items: center;

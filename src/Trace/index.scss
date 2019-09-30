@@ -53,6 +53,10 @@
         justify-content: center;
         align-items: center;
         flex: 1;
+
+        &:hover {
+          cursor: pointer;
+        }
       }
 
       #upload-image {
@@ -60,6 +64,16 @@
         justify-content: center;
         align-items: center;
         flex: 1;
+
+        &:hover {
+          cursor: pointer;
+        }
+
+        [type="file"] {
+          height: 0;
+          overflow: hidden;
+          width: 0;
+        }
       }
 
       #url-upload {

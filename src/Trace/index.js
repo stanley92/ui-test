@@ -1,7 +1,7 @@
 import './index.css';
 
 import React, { useState } from 'react';
-import Camera, { FACING_MODES, IMAGE_TYPES } from 'react-html5-camera-photo';
+import Camera, { IMAGE_TYPES } from 'react-html5-camera-photo';
 import 'react-html5-camera-photo/build/css/index.css';
 
 import webcamImg from '../img/icons/webcam.png';
@@ -33,10 +33,15 @@ const StatsContainer = ({stats}) => {
 
 const onTakePhoto = (dataUri) => {
     console.log(dataUri);
-};
 
-const onActionClick = () => {
-
+    fetch('http://localhost:8000/uploadCameraImage', {
+        method: 'POST',
+        data: { dataUri : dataUri },
+    }).then((response) => {
+        response.json().then((body) => {
+            console.log('Upload complete');
+        });
+    });
 };
 
 const Trace = () => {
@@ -70,6 +75,22 @@ const Trace = () => {
         }
     };
 
+    const imageUpload = (e) => {
+        const file = e.target.files[0];
+
+        const formData = new FormData();
+        formData.append('photo', file);
+
+        fetch('http://localhost:8000/upload', {
+            method: 'POST',
+            body: formData
+        }).then((response) => {
+            response.json().then((body) => {
+                console.log('Upload complete');
+            });
+        });
+    };
+
     return (
         <div id="trace-container">
             <h1 className="header">Cultural<span className="orange-bullet">&bull;</span>Trace</h1>
@@ -86,7 +107,13 @@ const Trace = () => {
                     </div>
                     <div id="upload-image" className="action" onClick={() => onActionClick('uploadImage')}>
                         <img src={uploadImg} alt=""/>
-                        Upload Image
+                        <input
+                            type="file"
+                            id="imageFile"
+                            name="imageFile"
+                            onChange={imageUpload}
+                        />
+                        <label for="imageFile">Upload Image</label>
                     </div>
                     <div id="url-upload" className="action">
                         <img src={searchImg} alt=""/>
