@@ -82,4 +82,28 @@
       }
     }
   }
+
+  #stats-container {
+    display: flex;
+    padding: 32px 20px;
+    width: 70%;
+    justify-content: space-around;
+
+    .stats-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      text-align: center;
+
+      .count {
+        color: $abubergine;
+        font-size: 40px;
+      }
+
+      .text {
+        color: $abubergineLight;
+        font-size: 14px;
+      }
+    }
+  }
 }

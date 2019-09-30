@@ -4,8 +4,46 @@ import webcamImg from '../img/icons/webcam.png';
 import uploadImg from '../img/icons/upload.png';
 import searchImg from '../img/icons/search.png';
 
-const Trace = () => {
+const StatsContainer = ({stats}) => {
+    return (
+        <div id="stats-container">
+            {
+                stats ?
+                    stats.map((val) => {
+                        return (
+                            <div className="stats-wrapper">
+                                <div className="count">{val.count}</div>
+                                <div className="text">{val.text}</div>
+                            </div>
+                        )
+                    })
+                    :
+                    null
 
+            }
+        </div>
+    );
+};
+
+const Trace = () => {
+    const stats = [
+        {
+            'count': 1,
+            'text': 'application'
+        },
+        {
+            'count': 85,
+            'text': 'subcultures'
+        },
+        {
+            'count': 177,
+            'text': 'cities'
+        },
+        {
+            'count': 98576,
+            'text': 'cultures traced'
+        }
+    ];
     return (
         <div id="trace-container">
             <h1 className="header">Cultural<span className="orange-bullet">&bull;</span>Trace</h1>
@@ -30,7 +68,7 @@ const Trace = () => {
                     </div>
                 </div>
             </div>
-            <div id="stats-container"></div>
+            <StatsContainer stats={stats} />
         </div>
     );
 };
