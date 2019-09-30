@@ -1,5 +1,4 @@
 #trace-container {
-  max-width: 1200px;
   display: flex;
   margin: auto;
   justify-content: center;
@@ -72,5 +71,13 @@
       #trace-container #stats-container .stats-wrapper .text {
         color: #67556d;
         font-size: 14px; }
+  #trace-container #images-container {
+    display: flex; }
+    #trace-container #images-container .image-col {
+      display: flex;
+      flex-wrap: wrap; }
+      #trace-container #images-container .image-col .image {
+        width: 116px;
+        flex: 1; }
 
 /*# sourceMappingURL=index.css.map */

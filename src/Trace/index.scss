@@ -1,7 +1,6 @@
 @import '../color_variables';
 
 #trace-container {
-  max-width: 1200px;
   display: flex;
   margin: auto;
   justify-content: center;
@@ -103,6 +102,20 @@
       .text {
         color: $abubergineLight;
         font-size: 14px;
+      }
+    }
+  }
+
+  #images-container {
+    display: flex;
+
+    .image-col {
+      display: flex;
+      flex-wrap: wrap;
+
+      .image {
+        width: 116px;
+        flex: 1;
       }
     }
   }
