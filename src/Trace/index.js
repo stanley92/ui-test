@@ -1,5 +1,9 @@
 import './index.css';
-import React from 'react';
+
+import React, { useState } from 'react';
+import Camera, { FACING_MODES, IMAGE_TYPES } from 'react-html5-camera-photo';
+import 'react-html5-camera-photo/build/css/index.css';
+
 import webcamImg from '../img/icons/webcam.png';
 import uploadImg from '../img/icons/upload.png';
 import searchImg from '../img/icons/search.png';
@@ -27,6 +31,14 @@ const StatsContainer = ({stats}) => {
     );
 };
 
+const onTakePhoto = (dataUri) => {
+    console.log(dataUri);
+};
+
+const onActionClick = () => {
+
+};
+
 const Trace = () => {
     const stats = [
         {
@@ -46,6 +58,18 @@ const Trace = () => {
             'text': 'cultures traced'
         }
     ];
+    const [actions, setActions] = useState({
+        'showCameraCapture': false
+    });
+
+    const onActionClick = (action) => {
+        if (action === 'showCamera') {
+            setActions({'showCameraCapture': true});
+        } else {
+            setActions({'showCameraCapture': false});
+        }
+    };
+
     return (
         <div id="trace-container">
             <h1 className="header">Cultural<span className="orange-bullet">&bull;</span>Trace</h1>
@@ -56,11 +80,11 @@ const Trace = () => {
                     Our aim is to refine AI by adding a distinctly human touch; one of empathy, to see people through the least judgemental and positive lens.
                 </p>
                 <div className="action-container">
-                    <div id="start-webcam" className="action">
+                    <div id="start-webcam" className="action" onClick={() => onActionClick('showCamera')}>
                         <img src={webcamImg} alt=""/>
                         Start Webcam
                     </div>
-                    <div id="upload-image" className="action">
+                    <div id="upload-image" className="action" onClick={() => onActionClick('uploadImage')}>
                         <img src={uploadImg} alt=""/>
                         Upload Image
                     </div>
@@ -69,6 +93,17 @@ const Trace = () => {
                         <input className="input-field" placeholder="Use Image Url"/>
                     </div>
                 </div>
+            </div>
+            <div id="camera-container">
+                {
+                    actions.showCameraCapture ?
+                        <Camera
+                            onTakePhoto = { (dataUri) => { onTakePhoto(dataUri); } }
+                            imageType = {IMAGE_TYPES.JPG}
+                        />
+                        :
+                        <div className="placeholder">Click on capture camera tp start taking photos</div>
+                }
             </div>
             <StatsContainer stats={stats} />
             <ImageBanner />

@@ -79,5 +79,16 @@
       #trace-container #images-container .image-col .image {
         width: 116px;
         flex: 1; }
+  #trace-container #camera-container {
+    margin-top: 10px;
+    width: 75%; }
+    #trace-container #camera-container .placeholder {
+      display: flex;
+      justify-content: center;
+      background: black;
+      border: 2px solid black;
+      color: white;
+      height: 200px;
+      padding-top: 20px; }
 
 /*# sourceMappingURL=index.css.map */

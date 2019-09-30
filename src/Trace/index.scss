@@ -119,4 +119,19 @@
       }
     }
   }
+
+  #camera-container {
+    margin-top: 10px;
+    width: 75%;
+
+    .placeholder {
+      display: flex;
+      justify-content: center;
+      background: black;
+      border: 2px solid black;
+      color: white;
+      height: 200px;
+      padding-top: 20px;
+    }
+  }
 }
