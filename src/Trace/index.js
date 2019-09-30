@@ -33,15 +33,6 @@ const StatsContainer = ({stats}) => {
 
 const onTakePhoto = (dataUri) => {
     console.log(dataUri);
-
-    fetch('http://localhost:8000/uploadCameraImage', {
-        method: 'POST',
-        data: { dataUri : dataUri },
-    }).then((response) => {
-        response.json().then((body) => {
-            console.log('Upload complete');
-        });
-    });
 };
 
 const Trace = () => {
